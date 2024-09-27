@@ -22,29 +22,29 @@ function App() {
         } finally {
             setLoading(false);
         }
-    }, []); // Empty dependency array for useCallback
+    }, []);
 
     useEffect(() => {
         fetchNews();
-    }, [fetchNews]); // Include fetchNews in the dependency array
+    }, [fetchNews]);
 
     return (
         <div className="App">
-            <h1>Latest News</h1>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error fetching news: {error.message}</p>}
-            <div className="news-container">
+            <h1 className="title">Latest News</h1>
+            {loading && <p className="loading">Loading...</p>}
+            {error && <p className="error">Error fetching news: {error.message}</p>}
+            <div className="news-grid">
                 {news.length > 0 ? (
                     news.map((article, index) => (
-                        <div className="news-item" key={index}>
-                            <h2>{article.name}</h2>
+                        <div className="news-card" key={index}>
+                            <h2 className="news-title">{article.name}</h2>
                             {article.image?.thumbnail?.contentUrl ? (
-                                <img src={article.image.thumbnail.contentUrl} alt={article.name} />
+                                <img className="news-image" src={article.image.thumbnail.contentUrl} alt={article.name} />
                             ) : (
-                                <img src="placeholder-image-url" alt="Placeholder" /> // Replace with a placeholder image URL
+                                <img className="news-image" src="placeholder-image-url" alt="Placeholder" />
                             )}
-                            <p>{article.description}</p>
-                            <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
+                            <p className="news-description">{article.description}</p>
+                            <a className="read-more" href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
                         </div>
                     ))
                 ) : (
