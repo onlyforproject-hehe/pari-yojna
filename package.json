@@ -1,5 +1,4 @@
 {
-  "axios": "^0.21.1",
   "name": "news-app",
   "version": "0.1.0",
   "private": true,
@@ -49,6 +48,9 @@
     },
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
-    }
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!axios)"
+    ]
   }
 }
