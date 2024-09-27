@@ -34,14 +34,22 @@ function App() {
             {loading && <p>Loading...</p>}
             {error && <p>Error fetching news: {error.message}</p>}
             <div className="news-container">
-                {news.map((article, index) => (
-                    <div className="news-item" key={index}>
-                        <h2>{article.name}</h2>
-                        <img src={article.image?.thumbnail?.contentUrl} alt={article.name} />
-                        <p>{article.description}</p>
-                        <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
-                    </div>
-                ))}
+                {news.length > 0 ? (
+                    news.map((article, index) => (
+                        <div className="news-item" key={index}>
+                            <h2>{article.name}</h2>
+                            {article.image?.thumbnail?.contentUrl ? (
+                                <img src={article.image.thumbnail.contentUrl} alt={article.name} />
+                            ) : (
+                                <img src="placeholder-image-url" alt="Placeholder" /> // Replace with a placeholder image URL
+                            )}
+                            <p>{article.description}</p>
+                            <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
+                        </div>
+                    ))
+                ) : (
+                    <p>No news articles available.</p>
+                )}
             </div>
         </div>
     );
