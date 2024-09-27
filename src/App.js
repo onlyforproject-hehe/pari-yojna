@@ -30,7 +30,9 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className="title">Latest News</h1>
+            <header className="app-header">
+                <h1 className="title">Latest News</h1>
+            </header>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">Error fetching news: {error.message}</p>}
             <div className="news-grid">
