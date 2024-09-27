@@ -30,23 +30,27 @@ function App() {
 
     return (
         <div className="App">
-            <header className="app-header">
-                <h1 className="title">Latest News</h1>
-            </header>
+            <h1 className="title">Latest News</h1>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">Error fetching news: {error.message}</p>}
             <div className="news-grid">
                 {news.length > 0 ? (
                     news.map((article, index) => (
                         <div className="news-card" key={index}>
-                            <h2 className="news-title">{article.name}</h2>
+                            <h2 className="news-title">
+                                <a href={article.url} target="_blank" rel="noopener noreferrer">
+                                    {article.name}
+                                </a>
+                            </h2>
                             {article.image?.thumbnail?.contentUrl ? (
                                 <img className="news-image" src={article.image.thumbnail.contentUrl} alt={article.name} />
                             ) : (
                                 <img className="news-image" src="placeholder-image-url" alt="Placeholder" />
                             )}
                             <p className="news-description">{article.description}</p>
-                            <a className="read-more" href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
+                            <a className="read-more" href={article.url} target="_blank" rel="noopener noreferrer">
+                                Read more
+                            </a>
                         </div>
                     ))
                 ) : (
