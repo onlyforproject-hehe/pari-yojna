@@ -1,93 +1,88 @@
-/* Global Styles */
-* {
-  box-sizing: border-box;
+/* App.css */
+body {
   margin: 0;
-  padding: 0;
   font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
   color: #333;
 }
 
-body {
-  background-color: #f5f5f5;
-  margin: 0;
-  padding: 0;
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.App {
-  max-width: 1200px;
-  margin: 0 auto;
+.app-header {
+  background-color: #0078d4;
+  color: white;
   padding: 20px;
+  text-align: center;
 }
 
 .title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #2c3e50;
-  font-weight: bold;
-  text-transform: uppercase;
+  margin: 0;
+  font-size: 2.5em;
 }
 
-.loading,
+.app-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.loading {
+  font-size: 1.2em;
+  color: #0078d4;
+}
+
 .error {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 20px;
+  color: red;
 }
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
 }
 
 .news-card {
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s;
 }
 
 .news-card:hover {
-  transform: translateY(-10px);
+  transform: scale(1.02);
 }
 
 .news-title {
-  font-size: 1.5rem;
-  padding: 20px;
-  background-color: #3498db;
-  color: white;
-  margin: 0;
+  font-size: 1.5em;
+  color: #0078d4;
 }
 
 .news-image {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
 .news-description {
-  padding: 15px;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #7f8c8d;
+  margin: 5px 0;
 }
 
 .read-more {
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  background-color: #2ecc71;
-  color: white;
+  color: #0078d4;
   text-decoration: none;
-  font-weight: bold;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  transition: background-color 0.3s ease;
 }
 
 .read-more:hover {
-  background-color: #27ae60;
+  text-decoration: underline;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #0078d4;
+  color: white;
 }

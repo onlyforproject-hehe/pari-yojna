@@ -30,33 +30,40 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className="title">Latest News</h1>
-            {loading && <p className="loading">Loading...</p>}
-            {error && <p className="error">Error fetching news: {error.message}</p>}
-            <div className="news-grid">
-                {news.length > 0 ? (
-                    news.map((article, index) => (
-                        <div className="news-card" key={index}>
-                            <h2 className="news-title">
-                                <a href={article.url} target="_blank" rel="noopener noreferrer">
-                                    {article.name}
+            <header className="app-header">
+                <h1 className="title">Latest News</h1>
+            </header>
+            <main className="app-content">
+                {loading && <p className="loading">Loading...</p>}
+                {error && <p className="error">Error fetching news: {error.message}</p>}
+                <div className="news-grid">
+                    {news.length > 0 ? (
+                        news.map((article, index) => (
+                            <div className="news-card" key={index}>
+                                <h2 className="news-title">
+                                    <a href={article.url} target="_blank" rel="noopener noreferrer">
+                                        {article.name}
+                                    </a>
+                                </h2>
+                                {article.image?.thumbnail?.contentUrl ? (
+                                    <img className="news-image" src={article.image.thumbnail.contentUrl} alt={article.name} />
+                                ) : (
+                                    <img className="news-image" src="placeholder-image-url" alt="Placeholder" />
+                                )}
+                                <p className="news-description">{article.description}</p>
+                                <a className="read-more" href={article.url} target="_blank" rel="noopener noreferrer">
+                                    Read more
                                 </a>
-                            </h2>
-                            {article.image?.thumbnail?.contentUrl ? (
-                                <img className="news-image" src={article.image.thumbnail.contentUrl} alt={article.name} />
-                            ) : (
-                                <img className="news-image" src="placeholder-image-url" alt="Placeholder" />
-                            )}
-                            <p className="news-description">{article.description}</p>
-                            <a className="read-more" href={article.url} target="_blank" rel="noopener noreferrer">
-                                Read more
-                            </a>
-                        </div>
-                    ))
-                ) : (
-                    <p>No news articles available.</p>
-                )}
-            </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No news articles available.</p>
+                    )}
+                </div>
+            </main>
+            <footer className="app-footer">
+                <p>© 2024 Pari Yojna. All rights reserved.</p>
+            </footer>
         </div>
     );
 }
